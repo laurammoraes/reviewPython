@@ -30,17 +30,17 @@ class Aplicacao:
         elif comando == '2':
             self._incrementar_item()
         elif comando == '3':
-            pass
+            self._decrementar_item()
         elif comando == '4':
-            pass
+            self._remover_items()
         elif comando == '5':
-            pass
+            self._exibir_resumo()
         else:
             return True
 
     def _inserir_cliente(self):
         nome = input('> Informe seu nome: ')
-        identidade = input('> Informe seu identidade: ')
+        identidade = input('> Informe sua identidade: ')
         cliente = Cliente(nome, identidade)
         self._carrinho.cliente = cliente
 
@@ -66,13 +66,16 @@ class Aplicacao:
         self._carrinho.incrementar_item(codigo)
 
     def _decrementar_item(self):
-        pass
+        condigo = input('Código:')
+        self._carrinho.decrementar_item(codigo)
 
     def _remover_items(self):
-        pass
+        codigo = input('Codigo:')
+        self._carrinho.remover_items(codigo)
 
     def _exibir_resumo(self):
-        pass
+        codigo = input('Codigo:')
+        self._carrinho.exibir_resumo
 
     def _exibir_menu(self):
         for op in Aplicacao.comandos:
