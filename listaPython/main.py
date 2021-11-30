@@ -1,4 +1,4 @@
-from carrinho import Carrinho, Cliente, Produto
+from logic import Boletim
 
 
 class Aplicacao:
@@ -17,7 +17,7 @@ class Aplicacao:
     ]
 
     def __init__(self):
-        self._carrinho = Carrinho()
+        self._exercicio = Exercicio()
 
     def executar(self):
         while True:
@@ -51,13 +51,16 @@ class Aplicacao:
         else:
             return True
 
-    def _inserir_cliente(self):
-        nome = input('> Informe seu nome: ')
-        identidade = input('> Informe sua identidade: ')
-        cliente = Cliente(nome, identidade)
-        self._carrinho.cliente = cliente
+    def _leitura_notas(self):
+        nota1 = input('>Informe a primeira nota:')
+        nota2 = input('> Informe a segunda nota: ')
+        nota3 = input('> Informe a terceira nota:')
+        nota4 = input('> Informe a quarta nota: ')
+       
+        boletim = Boletim(nota1, nota2, nota3, nota4)
+        self._exercicio.boletim = boletim
 
-    def _adicionar_produto(self):
+    def _calculo_consoantes(self):
         print('Informe os dados: ')
         descricao = input('Descricao: ')
         codigo = input('Codigo: ')
@@ -74,23 +77,35 @@ class Aplicacao:
                           valor_unitario=valor_unitario, quantidade=quantidade)
         self._carrinho.add_item(produto)
 
-    def _incrementar_item(self):
+    def _pares_impares(self):
         codigo = input('Codigo: ')
         self._carrinho.incrementar_item(codigo)
 
-    def _decrementar_item(self):
+    def _calculo_media(self):
         condigo = input('Código:')
         self._carrinho.decrementar_item(codigo)
 
-    def _remover_items(self):
+    def _selecao_alunos(self):
         codigo = input('Codigo:')
         self._carrinho.remover_items(codigo)
 
-    def _exibir_resumo(self):
+    def _temperatura_anual(self):
         codigo = input('Codigo:')
         self._carrinho.exibir_resumo
 
-    def _exibir_menu(self):
+    def _classe_datas(self):
+        for op in Aplicacao.comandos:
+            opcao, descricao = op
+            print(f'[{opcao}] - {descricao}')
+    def _interrogatorio(self):
+        for op in Aplicacao.comandos:
+            opcao, descricao = op
+            print(f'[{opcao}] - {descricao}')
+    def _ler_valores(self):
+        for op in Aplicacao.comandos:
+            opcao, descricao = op
+            print(f'[{opcao}] - {descricao}')
+    def _salario_funcionarios(self):
         for op in Aplicacao.comandos:
             opcao, descricao = op
             print(f'[{opcao}] - {descricao}')
