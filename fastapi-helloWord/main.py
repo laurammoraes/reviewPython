@@ -1,4 +1,7 @@
-from fastapi import FastApi 
+from fastapi import FastApi, status 
+from typing import List
+from fastapi.exceptions import HTTPException
+
 
 app = FastApi()
 
