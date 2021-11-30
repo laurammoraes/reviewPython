@@ -1,4 +1,4 @@
-from logic import Boletim
+from logic import Boletim, Exercicio
 
 
 class Aplicacao:
@@ -61,23 +61,12 @@ class Aplicacao:
         self._exercicio.boletim = boletim
 
     def _calculo_consoantes(self):
-        print('Informe os dados: ')
-        descricao = input('Descricao: ')
-        codigo = input('Codigo: ')
-
-        try:
-            valor_unitario = float(input('Valor unitario: '))
-            quantidade = int(input('Quantidade: '))
-            desconto = int(input('Desconto: '))
-        except ValueError:
-            print('Informe um valor numerico!!!!')
-            return
-
-        produto = Produto(codigo=codigo, descricao=descricao, desconto=desconto,
-                          valor_unitario=valor_unitario, quantidade=quantidade)
-        self._carrinho.add_item(produto)
+       
 
     def _pares_impares(self):
+        for i=0 to 20
+            num = input('> Informe o número')
+
         codigo = input('Codigo: ')
         self._carrinho.incrementar_item(codigo)
 
