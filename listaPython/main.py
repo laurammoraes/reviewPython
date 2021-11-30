@@ -6,9 +6,14 @@ class Aplicacao:
         (0, 'Notas: leitura de notas e cálculo de média'),
         (1, 'Cálculo de consoantes'),
         (2, 'ParesXImpares'),
-        (3, 'Decrementar item'),
-        (4, 'Remover item'),
-        (5, 'Exibir resumo')
+        (3, 'Cálculo de média'),
+        (4, 'Seleção de alunos'),
+        (5, 'Temperatura anual'),
+        (6, 'Classe das datas'),
+        (7, 'Interrogatório'),
+        (8, 'Ler valores'),
+        (9,'Salário de funcionários'),
+        (10, '')
     ]
 
     def __init__(self):
@@ -21,20 +26,28 @@ class Aplicacao:
             deve_sair = self.executar_comando(comando)
             if deve_sair:
                 break
-
+ 
     def executar_comando(self, comando):
         if comando == '0':
-            self._inserir_cliente()
+            self._leitura_notas()
         elif comando == '1':
-            self._adicionar_produto()
+            self._calculo_consoantes()
         elif comando == '2':
-            self._incrementar_item()
+            self._pares_impares()
         elif comando == '3':
-            self._decrementar_item()
+            self._calculo_media()
         elif comando == '4':
-            self._remover_items()
+            self._selecao_alunos()
         elif comando == '5':
-            self._exibir_resumo()
+            self._temperatura_anual()
+        elif comando == '6':
+            self._classe_datas()
+        elif comando == '7':
+            self._interrogatorio()
+        elif comando == '8':
+            self._ler_valores()
+        elif comando == '9':
+            self._salario_funcionarios()
         else:
             return True
 
