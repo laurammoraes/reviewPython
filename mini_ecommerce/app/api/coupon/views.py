@@ -1,11 +1,11 @@
 from fastapi import APIRouter, status
 from typing import List
 from fastapi import Depends
+
 from app.models.models import Coupon
-from mini_ecommerce.app.models.models import Coupon
-from .schemas import ProductDiscountSchema
-from .schemas import ShowProductDiscountSchema
-from sqlalchemy.orm import Session
+from app.repositories.coupon_repository import CouponRepository
+
+
 from app.db.db import get_db
 from app.repositories.coupon_repository import CouponRepository
 
@@ -19,15 +19,11 @@ def create(coupon: CouponSchema, service: CouponService = Depends()):
     service.create_coupon(coupon)
    
 
-# @router.get('/', response_model=List[ShowCoupontSchema])
-# def index(repository: ProductDiscountRepository = Depends()):
-#     return repository.get_all()
-    
+@router.get('/')
+def index(repository: CouponRepository = Depends()):
+    return repository.get_all()
 
-# @router.put(' /{id}')
-# def update(id: int, productDiscount: ProductDiscountSchema,repository: ProductDiscountRepository = Depends()):
-#    repository.update(id, productDiscount.dict())
 
-# @router.get('/{id}', response_model = ShowProductDiscountSchema)
-# def show(id: int, repository: ProductDiscountRepository = Depends()):
-#     return repository.get_by_id(id)
+@router.delete('/{id}', status_code=status.HTTP_204_NO_CONTENT)
+def delete(id: int, repository: CouponRepository = Depends()):
+    repository.remove(id)

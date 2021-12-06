@@ -1,7 +1,7 @@
 from sqlalchemy import Column
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql.schema import ForeignKey
-from sqlalchemy.sql.sqltypes import DATETIME, VARCHAR, Boolean, Float, Integer, String 
+from sqlalchemy.sql.sqltypes import DATETIME, VARCHAR, Boolean, Date, Float, Integer, String 
 from app.db.db import Base
 
 
@@ -34,6 +34,18 @@ class Coupon(Base):
     limit = Column(Integer)
     type = Column(VARCHAR(15))
     value = Column(Float)
+
+class Customer(Base): 
+    __tablename__ = 'customers'
+
+    id = Column(Integer, primary_key= True )
+    firstName = Column(VARCHAR(45))
+    lastName = Column(VARCHAR(45))
+    phoneNumber = Column(VARCHAR(45))
+    genre = Column(VARCHAR(45))
+    documentId = Column(VARCHAR(45))
+    birthDate = Column(Date)
+    
     
 
 

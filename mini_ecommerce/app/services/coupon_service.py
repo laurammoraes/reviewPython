@@ -1,6 +1,6 @@
 from fastapi import Depends
 from app.repositories.payment_repository import PaymentMethodRepository
-from app.repositories.product_discount_repository import ProductDiscountRepository
+
 from app.repositories.coupon_repository import CouponRepository
 
 from app.api.coupon.schemas import CouponSchema
