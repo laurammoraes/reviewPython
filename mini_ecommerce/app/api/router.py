@@ -6,6 +6,8 @@ from .payment.views import router as payment_router
 from .productDiscount.views import router as productDiscount_router
 from .coupon.views import router as coupon_router
 from .customer.views import router as customer_router
+from .address.views import router as address_router
+
 
 
 
@@ -19,6 +21,8 @@ router.include_router(payment_router, prefix= '/payment')
 router.include_router(productDiscount_router, prefix= '/productDiscount')
 router.include_router(coupon_router, prefix= '/coupon')
 router.include_router(customer_router, prefix= '/customer')
+router.include_router(address_router, prefix= '/address')
+
 
 
 

@@ -45,7 +45,20 @@ class Customer(Base):
     genre = Column(VARCHAR(45))
     documentId = Column(VARCHAR(45))
     birthDate = Column(Date)
-    
+
+class Adress(Base):
+    __tablename__= 'address'
+
+    id = Column(Integer, primary_key= True)
+    address = Column(VARCHAR(45))
+    city = Column(VARCHAR(45))
+    state = Column(VARCHAR(45))
+    number = Column(VARCHAR(10))
+    zipcode = Column(VARCHAR(6))
+    neighbourhood = Column(VARCHAR(45))
+    primary = Column(Integer)  
+    customer_id = Column(Integer, ForeignKey('customers.id'))
+    customer = relationship(Customer)  
     
 
 
