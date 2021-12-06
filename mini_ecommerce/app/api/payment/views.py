@@ -6,25 +6,23 @@ from .schemas import PaymentSchema
 from .schemas import ShowPaymentSchema
 from sqlalchemy.orm import Session
 from app.db.db import get_db
+from app.repositories.payment_repository import PaymentMethodRepository
 
 router = APIRouter()
 
 @router.post('/', status_code= status.HTTP_201_CREATED)
-def create(payment: PaymentSchema, db: Session = Depends(get_db)):
-    db.add(Payment(**payment.dict()))
-    db.commit()
+def create(payment: PaymentSchema, repository: PaymentMethodRepository = Depends()):
+   repository.create(Payment(**payment.dict()))
 
 @router.get('/', response_model=List[ShowPaymentSchema])
-def index(db: Session = Depends(get_db)):
-    return db.query(Payment).all()
+def index(repository: PaymentMethodRepository = Depends()):
+    return repository.get_all()
     
 
 @router.put(' /{id}')
-def update(id: int, payment: PaymentSchema, db: Session = Depends(get_db)):
-    query = db.query(Payment).filter_by(id=id)   
-    query.update(payment.dict())
-    db.commit()
+def update(id: int, payment: PaymentSchema, repository: PaymentMethodRepository = Depends()):
+     repository.update(id, payment.dict())
 
 @router.get('/{id}', response_model = ShowPaymentSchema)
-def show(id: int, db: Session = Depends(get_db)):
-    return db.query(Payment).filter_by(id=id).first()
+def show(id: int,  repository: PaymentMethodRepository = Depends()):
+    return repository.get_by_id(id)
