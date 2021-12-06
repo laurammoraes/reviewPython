@@ -1,7 +1,7 @@
 from sqlalchemy import Column
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql.schema import ForeignKey
-from sqlalchemy.sql.sqltypes import Boolean, Float, Integer, String 
+from sqlalchemy.sql.sqltypes import DATETIME, VARCHAR, Boolean, Float, Integer, String 
 from app.db.db import Base
 
 
@@ -25,8 +25,16 @@ class Payment(Base):
     name = Column(String(150))
     enabled = Column(Integer)
 
+class Coupon(Base): 
+    __tablename__ = 'coupons'
 
-
+    id = Column(Integer, primary_key= True )
+    code = Column(VARCHAR(10))
+    expire_at = Column(DATETIME)
+    limit = Column(Integer)
+    type = Column(VARCHAR(15))
+    value = Column(Float)
+    
 
 
 
