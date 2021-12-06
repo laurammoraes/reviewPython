@@ -9,11 +9,14 @@ from sqlalchemy.orm import Session
 from app.db.db import get_db
 from app.repositories.product_discount_repository import ProductDiscountRepository
 
+from app.services.product_discount_service import ProductDiscountService
+from .schemas import ProductDiscountSchema
+
 router = APIRouter()
 
 @router.post('/', status_code= status.HTTP_201_CREATED)
-def create(productDiscount: ProductDiscountSchema, repository: ProductDiscountRepository = Depends()):
-    repository.create(Product(**productDiscount.dict()))
+def create(productDiscount: ProductDiscountSchema, service: ProductDiscountService = Depends()):
+    service.create_discount(productDiscount)
    
 
 @router.get('/', response_model=List[ShowProductDiscountSchema])
