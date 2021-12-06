@@ -15,19 +15,19 @@ from .schemas import CouponSchema
 router = APIRouter()
 
 @router.post('/', status_code= status.HTTP_201_CREATED)
-def create(productDiscount: ProductDiscountSchema, service: ProductDiscountService = Depends()):
-    service.create_discount(productDiscount)
+def create(coupon: CouponSchema, service: CouponService = Depends()):
+    service.create_coupon(coupon)
    
 
-@router.get('/', response_model=List[ShowProductDiscountSchema])
-def index(repository: ProductDiscountRepository = Depends()):
-    return repository.get_all()
+# @router.get('/', response_model=List[ShowCoupontSchema])
+# def index(repository: ProductDiscountRepository = Depends()):
+#     return repository.get_all()
     
 
-@router.put(' /{id}')
-def update(id: int, productDiscount: ProductDiscountSchema,repository: ProductDiscountRepository = Depends()):
-   repository.update(id, productDiscount.dict())
+# @router.put(' /{id}')
+# def update(id: int, productDiscount: ProductDiscountSchema,repository: ProductDiscountRepository = Depends()):
+#    repository.update(id, productDiscount.dict())
 
-@router.get('/{id}', response_model = ShowProductDiscountSchema)
-def show(id: int, repository: ProductDiscountRepository = Depends()):
-    return repository.get_by_id(id)
+# @router.get('/{id}', response_model = ShowProductDiscountSchema)
+# def show(id: int, repository: ProductDiscountRepository = Depends()):
+#     return repository.get_by_id(id)

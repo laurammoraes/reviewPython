@@ -3,7 +3,7 @@ from typing import List
 from fastapi import Depends
 
 from app.models.models import Product
-from mini_ecommerce.app.repositories.product_repository import ProductRepository 
+
 from .schemas import ProductSchema
 from .schemas import ShowProductSchema
 from sqlalchemy.orm import Session
