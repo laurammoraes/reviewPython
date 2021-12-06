@@ -19,15 +19,11 @@ def create(productDiscount: ProductDiscountSchema, service: ProductDiscountServi
     service.create_discount(productDiscount)
    
 
-# @router.get('/', response_model=List[ShowProductDiscountSchema])
-# def index(repository: ProductDiscountRepository = Depends()):
-#     return repository.get_all()
-    
+@router.get('/')
+def index(repository: ProductDiscountRepository = Depends()):
+    return repository.get_all()
 
-# @router.put(' /{id}')
-# def update(id: int, productDiscount: ProductDiscountSchema,repository: ProductDiscountRepository = Depends()):
-#    repository.update(id, productDiscount.dict())
 
-# @router.get('/{id}', response_model = ShowProductDiscountSchema)
-# def show(id: int, repository: ProductDiscountRepository = Depends()):
-#     return repository.get_by_id(id)
+@router.delete('/{id}', status_code=status.HTTP_204_NO_CONTENT)
+def delete(id: int, repository: ProductDiscountRepository = Depends()):
+    repository.remove(id)
