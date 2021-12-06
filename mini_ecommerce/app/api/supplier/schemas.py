@@ -2,9 +2,9 @@ from pydantic import BaseModel
 
 
 
-class SuplierSchema(BaseModel):
+class SupplierSchema(BaseModel):
    name: str
-class ShowSuplierSchema(SuplierSchema):
+class ShowSupplierSchema(SupplierSchema):
     id: str
     class Config:
         orm_mode = True

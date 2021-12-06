@@ -1,4 +1,7 @@
 from pydantic import BaseModel
+from app.api.category.schemas import ShowCategorySchema
+from app.api.supplier.schemas import ShowSupplierSchema
+
 
 
 
@@ -7,9 +10,13 @@ class ProductSchema(BaseModel):
     price: float
     technical_details: str
     image: str
-    visible: bool 
+    visible: bool
+    category_id: int
+    supplier_id: int
 
 class ShowProductSchema(ProductSchema):
     id: str
+    category: ShowCategorySchema
+    supplier: ShowSupplierSchema
     class Config:
         orm_mode = True
