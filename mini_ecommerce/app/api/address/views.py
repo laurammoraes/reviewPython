@@ -27,3 +27,7 @@ def update(id: int, adress:AdressesSchema, repository: AdressRepository = Depend
 @router.get('/{id}', response_model = AdressesSchema)
 def show(id: int,  repository: AdressRepository = Depends()):
     return repository.get_by_id(id)
+
+@router.delete('/{id}', status_code=status.HTTP_204_NO_CONTENT)
+def delete(id: int, repository: AdressRepository = Depends()):
+    repository.remove(id)

@@ -13,4 +13,4 @@ app.include_router(router)
 #python3 -m venv venv
 #source venv/bin/activate
 #pip install uvicorn
-# uvicorn main:app
+# uvicorn main:app 

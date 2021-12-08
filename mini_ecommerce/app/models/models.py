@@ -35,6 +35,16 @@ class Coupon(Base):
     type = Column(VARCHAR(15))
     value = Column(Float)
 
+class User(Base): 
+    __tablename__ = 'users'
+
+    id = Column(Integer, primary_key= True )
+    displayname = Column(VARCHAR(45))
+    email = Column(VARCHAR(45))
+    role = Column(VARCHAR(45))
+    password = Column(VARCHAR(45))
+    
+
 class Customer(Base): 
     __tablename__ = 'customers'
 

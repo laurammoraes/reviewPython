@@ -11,6 +11,9 @@ class CustomerSchema(BaseModel):
    documentId: str
    birthDate: str
 
+# class CustomerEdit(CustomerSchema):
+    
+
 
 class ShowCustomerSchema(CustomerSchema):
     id: str

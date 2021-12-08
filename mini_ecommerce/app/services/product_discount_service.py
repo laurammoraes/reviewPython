@@ -2,13 +2,15 @@ from fastapi import Depends
 from app.repositories.payment_repository import PaymentMethodRepository
 from app.repositories.product_discount_repository import ProductDiscountRepository
 from app.api.productDiscount.schemas import ProductDiscountSchema
+from mini_ecommerce.app.models.models import Payment
 
 
 class ProductDiscountService:
-    def __init__(self, payment_method_repository: PaymentMethodRepository = Depends(),
-                 product_discount_repository: ProductDiscountRepository = Depends()):
+    def __init__(self, payment_method_repository: PaymentMethodRepository = Depends(), 
+                product_discount_repository: ProductDiscountRepository = Depends()):
         self.payment_method_repository = payment_method_repository
         self.product_discount_repository = product_discount_repository
 
-    def create_discount(self, discount: ProductDiscountSchema):
-        pass
+    def create_discount(self, payment_method_repository: PaymentMethodRepository = Depends()):
+        
+            
