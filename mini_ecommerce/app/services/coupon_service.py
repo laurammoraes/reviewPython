@@ -11,11 +11,9 @@ from app.common.exceptions import CouponCodeNotExistsException
 
 
 class CouponService:
-    def __init__(self, payment_method_repository: PaymentMethodRepository = Depends(),
-                 coupon_repository: CouponRepository = Depends()):
-        self.payment_method_repository = payment_method_repository
+    def __init__(self, coupon_repository: CouponRepository = Depends()):
         self.coupon_repository = coupon_repository
-
+       
     def create_coupon(self, coupon: CouponSchema):
         find_by_code = self.coupon_repository.find_by_code(coupon.code)
         if find_by_code:

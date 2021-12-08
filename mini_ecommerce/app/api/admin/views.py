@@ -7,11 +7,12 @@ from .schemas import ShowAdminSchema
 from sqlalchemy.orm import Session
 from app.db.db import get_db
 from app.repositories.admin_repository import AdminRepository
+from app.services.admin_service import AdminService
 
 router = APIRouter()
 
 @router.post('/', status_code= status.HTTP_201_CREATED)
-def create(admin: AdminSchema,repository: AdminRepository = Depends()):
+def create(admin: AdminSchema, service: AdminService = Depends()):
     repository.create(Admin(**admin.dict()))
 
 @router.get('/', response_model=List[ShowAdminSchema])

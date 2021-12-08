@@ -21,3 +21,11 @@ class CouponCodeNotExistsException(Exception):
 class ProductDiscountIdAlreadyExistsException(Exception):
     def __init__(self):
         self.message = 'This id is already been used'
+
+class AdminEmailAlreadyExistsException(Exception):
+    def __init__(self):
+        self.message = 'This email is already been used'
+
+class AdminEmailNotExistsException(Exception):
+    def __init__(self):
+        self.message = 'This email not exists, make create this'
