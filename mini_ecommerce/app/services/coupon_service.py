@@ -17,9 +17,9 @@ class CouponService:
         self.coupon_repository = coupon_repository
 
     def create_coupon(self, coupon: CouponSchema):
-       find_by_code = self.coupon_repository.find_by_code(coupon.code)
+        find_by_code = self.coupon_repository.find_by_code(coupon.code)
         if find_by_code:
-            raise CouponCodeAlreadyExistsException()
+                raise CouponCodeAlreadyExistsException()
 
         self.coupon_repository.create(CouponType(**coupon.dict()))
 

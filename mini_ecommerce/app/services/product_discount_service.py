@@ -2,7 +2,8 @@ from fastapi import Depends
 from app.repositories.payment_repository import PaymentMethodRepository
 from app.repositories.product_discount_repository import ProductDiscountRepository
 from app.api.productDiscount.schemas import ProductDiscountSchema
-from mini_ecommerce.app.models.models import Payment
+from app.common.exceptions import ProductDiscountIdAlreadyExistsException
+from app.models.models import Payment
 
 
 class ProductDiscountService:
@@ -11,6 +12,10 @@ class ProductDiscountService:
         self.payment_method_repository = payment_method_repository
         self.product_discount_repository = product_discount_repository
 
-    def create_discount(self, payment_method_repository: PaymentMethodRepository = Depends()):
-        
+    def create_discount(self, productDiscount: ProductDiscountSchema):
+        find_by_id = self.product_discount_repository.find_by_id(productDiscount.id)
+        if find_by_id:
+            raise ProductDiscountIdAlreadyExistsException()
+
+        self.product_discount_repository.create(ProductDiscountSchema(**productDiscount.dict()))
             

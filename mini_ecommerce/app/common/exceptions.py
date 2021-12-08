@@ -18,3 +18,6 @@ class CouponCodeAlreadyExistsException(Exception):
 class CouponCodeNotExistsException(Exception):
     def __init__(self):
         self.message = 'This code not exists, please create this'
+class ProductDiscountIdAlreadyExistsException(Exception):
+    def __init__(self):
+        self.message = 'This id is already been used'
