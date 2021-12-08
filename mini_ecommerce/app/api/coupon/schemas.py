@@ -7,9 +7,9 @@ class CouponType(str, Enum):
     VALUE = 'value'
     PERCENTAGE = 'percentantage'
 
-# class CouponUpdate(BaseModel):
-#     expire_at: datetime
-#     limit: int
+class CouponUpdateSchema(BaseModel):
+    expire_at: datetime
+    limit: int
    
 
 class CouponSchema(BaseModel):

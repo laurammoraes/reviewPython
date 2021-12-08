@@ -11,6 +11,8 @@ from app.repositories.coupon_repository import CouponRepository
 
 from app.services.coupon_service import CouponService
 from .schemas import CouponSchema
+from .schemas import CouponUpdateSchema
+
 
 router = APIRouter()
 
@@ -27,3 +29,7 @@ def index(repository: CouponRepository = Depends()):
 @router.delete('/{id}', status_code=status.HTTP_204_NO_CONTENT)
 def delete(id: int, repository: CouponRepository = Depends()):
     repository.remove(id)
+
+@router.put('/{id}', status_code= status.HTTP_201_CREATED)
+def create(coupon: CouponUpdateSchema, service: CouponService = Depends()):
+    service.update_coupon(coupon)
