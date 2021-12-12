@@ -10,7 +10,7 @@ from app.common.exceptions import AdminEmailNotExistsException
 
 
 
-class CouponService:
+class AdminService:
     def __init__(self, admin_repository: AdminRepository = Depends()):
         self.admin_repository = admin_repository
 

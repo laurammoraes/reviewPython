@@ -13,7 +13,7 @@ router = APIRouter()
 
 @router.post('/', status_code= status.HTTP_201_CREATED)
 def create(admin: AdminSchema, service: AdminService = Depends()):
-    repository.create(Admin(**admin.dict()))
+    service.create(Admin(**admin.dict()))
 
 @router.get('/', response_model=List[ShowAdminSchema])
 def index(repository: AdminRepository = Depends()):
@@ -27,3 +27,7 @@ def update(id: int, admin: AdminSchema, repository: AdminRepository = Depends())
 @router.get('/{id}', response_model = ShowAdminSchema)
 def show(id: int, repository: AdminRepository = Depends()):
     return repository.get_by_id(id)
+
+@router.delete('/{id}', status_code=status.HTTP_204_NO_CONTENT)
+def delete(id: int, repository: AdminRepository = Depends()):
+    repository.remove(id)

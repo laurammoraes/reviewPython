@@ -1,5 +1,7 @@
 from pydantic import BaseModel
 
+# from app.api.
+
 
 
 
@@ -10,12 +12,14 @@ class CustomerSchema(BaseModel):
    genre: str
    documentId: str
    birthDate: str
+   user_id: str
 
-# class CustomerEdit(CustomerSchema):
+
     
 
 
 class ShowCustomerSchema(CustomerSchema):
     id: str
+    # user: ShowUserSchema
     class Config:
         orm_mode = True

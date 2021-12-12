@@ -1,7 +1,8 @@
 from sqlalchemy import Column
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql.schema import ForeignKey
-from sqlalchemy.sql.sqltypes import DATETIME, VARCHAR, Boolean, Date, Float, Integer, String 
+from sqlalchemy.sql.sqltypes import DATETIME, VARCHAR, Boolean, Date, Float, Integer, String
+from sqlalchemy.sql.type_api import UserDefinedType 
 from app.db.db import Base
 
 
@@ -41,10 +42,9 @@ class User(Base):
     id = Column(Integer, primary_key= True )
     displayname = Column(VARCHAR(45))
     email = Column(VARCHAR(45))
-    role = Column(VARCHAR(45))
-    password = Column(VARCHAR(45))
+    role = Column(VARCHAR(10))
+    password = Column(VARCHAR(100))
     
-
 class Customer(Base): 
     __tablename__ = 'customers'
 
@@ -55,6 +55,13 @@ class Customer(Base):
     genre = Column(VARCHAR(45))
     documentId = Column(VARCHAR(45))
     birthDate = Column(Date)
+    user_id = Column(Integer, ForeignKey('users.id'))
+    user = relationship(User) 
+
+
+    
+
+ 
 
 class Adress(Base):
     __tablename__= 'address'

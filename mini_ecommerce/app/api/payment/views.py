@@ -17,7 +17,7 @@ def create(payment: PaymentSchema, repository: PaymentMethodRepository = Depends
 @router.get('/', response_model=List[ShowPaymentSchema])
 def index(repository: PaymentMethodRepository = Depends()):
     return repository.get_all()
-    
+        
 
 @router.put(' /{id}')
 def update(id: int, payment: PaymentSchema, repository: PaymentMethodRepository = Depends()):
