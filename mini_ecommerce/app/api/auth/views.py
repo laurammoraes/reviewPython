@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException, status
 from fastapi.param_functions import Depends
 from fastapi.security import OAuth2PasswordBearer
 from fastapi.security.oauth2 import OAuth2PasswordRequestForm
-from mini_ecommerce.app.repositories.user_repository import UserRepository
+from .api.app.repositories.user_repository import UserRepository
 from ...services.auth_service import create_token
 import bcrypt
 

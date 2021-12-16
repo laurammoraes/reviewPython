@@ -7,8 +7,8 @@ from .productDiscount.views import router as productDiscount_router
 from .coupon.views import router as coupon_router
 from .customer.views import router as customer_router
 from .address.views import router as address_router
-from .auth.views import router as auth_router
-
+# from .auth.views import router as auth_router
+from .catalog.views import router as catalog_router
 
 
 
@@ -25,8 +25,8 @@ router.include_router(productDiscount_router, prefix= '/productDiscounts',  tags
 router.include_router(coupon_router, prefix= '/coupons',  tags = ['coupon'])
 router.include_router(customer_router, prefix= '/customers',  tags = ['customer'])
 router.include_router(address_router, prefix= '/address',  tags = ['address'])
-router.include_router(auth_router, prefix= '/auth',  tags = ['auth'])
-
+# router.include_router(auth_router, prefix= '/auth',  tags = ['auth'])
+router.include_router(catalog_router, prefix='/catalog', tags=['catalog'])
 
 
 

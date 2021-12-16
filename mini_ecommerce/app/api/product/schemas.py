@@ -15,8 +15,9 @@ class ProductSchema(BaseModel):
     supplier_id: int
 
 class ShowProductSchema(ProductSchema):
-    id: str
+    id: int
     category: ShowCategorySchema
     supplier: ShowSupplierSchema
+
     class Config:
         orm_mode = True
