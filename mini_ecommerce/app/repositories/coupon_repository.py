@@ -5,6 +5,6 @@ from app.models.models import Coupon
 from .base_repository import BaseRepository
 
 
-class CouponRepository:
+class CouponRepository(BaseRepository):
     def __init__(self, session: Session = Depends(get_db)):
         super().__init__(session, Coupon)

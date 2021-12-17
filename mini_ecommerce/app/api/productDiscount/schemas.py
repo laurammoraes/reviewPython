@@ -8,6 +8,7 @@ class DiscountMode(str, Enum):
     PERCENTAGE = 'percentantage'
 
 class ProductDiscountSchema(BaseModel):
+    id: int
     mode: DiscountMode
     value: float
     payment_method_id: int

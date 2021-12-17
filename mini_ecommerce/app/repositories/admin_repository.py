@@ -5,7 +5,7 @@ from app.models.models import Admin
 from .base_repository import BaseRepository
 
 
-class AdminRepository:
+class AdminRepository(BaseRepository):
     def __init__(self, session: Session = Depends(get_db)):
         super().__init__(session, Admin)
 
