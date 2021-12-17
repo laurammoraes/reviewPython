@@ -9,3 +9,5 @@ from .base_repository import BaseRepository
 class CategoryRepository(BaseRepository):
     def __init__(self, session: Session = Depends(get_db)):
         super().__init__(session, Category)
+    def find_by_id(self, id):
+        return self.session.query(self.model).filter_by(id=id).first()
