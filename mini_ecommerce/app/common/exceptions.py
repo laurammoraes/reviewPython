@@ -29,3 +29,7 @@ class AdminEmailAlreadyExistsException(Exception):
 class AdminEmailNotExistsException(Exception):
     def __init__(self):
         self.message = 'This email not exists, make create this'
+
+class ProductDiscountIdNotExistsException(Exception):
+    def __init__(self):
+        self.message = 'This id not exists, make create this'

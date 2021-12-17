@@ -3,6 +3,8 @@ from app.repositories.payment_repository import PaymentMethodRepository
 from app.repositories.product_discount_repository import ProductDiscountRepository
 from app.api.productDiscount.schemas import ProductDiscountSchema
 from app.common.exceptions import ProductDiscountIdAlreadyExistsException
+from app.common.exceptions import ProductDiscountIdNotExistsException
+
 from app.models.models import Payment
 
 
@@ -18,4 +20,12 @@ class ProductDiscountService:
             raise ProductDiscountIdAlreadyExistsException()
 
         self.product_discount_repository.create(ProductDiscountSchema(**productDiscount.dict()))
+    
+    def update_productDiscount(self, productDiscount: ProductDiscountSchema):
+        find_by_id = self.product_discount_repository.find_by_id(productDiscount.id)
+
+        if find_by_id:
+            self.product_discount_repository.update(ProductDiscountSchema(**productDiscount.dict()))
+
+        raise ProductDiscountIdNotExistsException()
             
